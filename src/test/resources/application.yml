@@ -1,0 +1,5 @@
+# mybatis generator代码生成数据库配置
+generatorDriverClass: com.mysql.jdbc.Driver
+generatorConnectionURL: jdbc:mysql://127.0.0.1:3306/ik
+generatorUserId: ik
+generatorPassword: 123456
