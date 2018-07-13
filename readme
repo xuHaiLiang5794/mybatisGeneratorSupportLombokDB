@@ -1,3 +1,5 @@
+mybatis代码生成工具，去掉get/set方法、增加Lombok注解、字段注释取用表字段描述
+
 org.mybatis.generator.internal.DefaultCommentGenerator
 属性上的文档注释取数据库中的备注信息
 get/set方法不要注释
