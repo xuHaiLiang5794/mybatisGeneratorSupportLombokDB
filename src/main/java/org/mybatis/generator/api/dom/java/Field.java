@@ -27,12 +27,12 @@ public class Field extends JavaElement {
     private boolean importJsonFormat;
     private boolean importSwagger;
 
-    public void setImportSwagger(boolean importJsonFormat) {
-        this.importJsonFormat = importJsonFormat;
+    public void setImportSwagger(boolean importSwagger) {
+        this.importSwagger = importSwagger;
     }
 
     public boolean isImportSwagger() {
-        return this.importJsonFormat;
+        return this.importSwagger;
     }
 
 
