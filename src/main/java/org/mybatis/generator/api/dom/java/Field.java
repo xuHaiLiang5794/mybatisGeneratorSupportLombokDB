@@ -25,6 +25,16 @@ public class Field extends JavaElement {
     private boolean isVolatile;
 
     private boolean importJsonFormat;
+    private boolean importSwagger;
+
+    public void setImportSwagger(boolean importJsonFormat) {
+        this.importJsonFormat = importJsonFormat;
+    }
+
+    public boolean isImportSwagger() {
+        return this.importJsonFormat;
+    }
+
 
     public void setImportJsonFormat(boolean importJsonFormat) {
         this.importJsonFormat = importJsonFormat;

@@ -317,7 +317,23 @@ public class DefaultCommentGenerator implements CommentGenerator {
         String remarks = introspectedColumn.getRemarks();
         if ((remarks != null && !"".equals(remarks))) {
             addJavaDocLine(field, remarks);
+            addSwaggerAnnotation(field, remarks);
         }
+    }
+
+    /**
+     * 给属性添加Swagger注解
+     *
+     * @param field
+     * @param remarks
+     */
+    private void addSwaggerAnnotation(Field field, String remarks) {
+        field.setImportSwagger(true);
+        StringBuilder sb = new StringBuilder();
+        sb.append("@ApiModelProperty(\"");
+        sb.append(remarks);
+        sb.append("\")");
+        field.addAnnotation(sb.toString());
     }
 
     /**
