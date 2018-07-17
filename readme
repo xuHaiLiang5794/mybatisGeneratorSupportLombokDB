@@ -22,3 +22,8 @@ org.mybatis.generator.api.dom.java.TopLevelClass
 
 org.mybatis.generator.api.dom.java.InnerClass
 添加lombok注解
+
+
+org.mybatis.generator.internal.util.JavaBeansUtil
+org.mybatis.generator.api.dom.java.TopLevelClass
+添加日期/时间格式化注解

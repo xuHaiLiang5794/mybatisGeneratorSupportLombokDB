@@ -24,6 +24,16 @@ public class Field extends JavaElement {
     private boolean isTransient;
     private boolean isVolatile;
 
+    private boolean importJsonFormat;
+
+    public void setImportJsonFormat(boolean importJsonFormat) {
+        this.importJsonFormat = importJsonFormat;
+    }
+
+    public boolean isImportJsonFormat() {
+        return this.importJsonFormat;
+    }
+
     public Field() {
         // use a default name to avoid NPE
         this("foo", FullyQualifiedJavaType.getIntInstance()); //$NON-NLS-1$

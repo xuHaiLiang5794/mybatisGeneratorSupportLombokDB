@@ -15,21 +15,17 @@
  */
 package org.mybatis.generator.internal.util;
 
-import static org.mybatis.generator.internal.util.StringUtility.isTrue;
+import org.mybatis.generator.api.IntrospectedColumn;
+import org.mybatis.generator.api.IntrospectedTable;
+import org.mybatis.generator.api.dom.java.*;
+import org.mybatis.generator.config.Context;
+import org.mybatis.generator.config.PropertyRegistry;
+import org.mybatis.generator.config.TableConfiguration;
 
 import java.util.Locale;
 import java.util.Properties;
 
-import org.mybatis.generator.api.IntrospectedColumn;
-import org.mybatis.generator.api.IntrospectedTable;
-import org.mybatis.generator.api.dom.java.Field;
-import org.mybatis.generator.api.dom.java.FullyQualifiedJavaType;
-import org.mybatis.generator.api.dom.java.JavaVisibility;
-import org.mybatis.generator.api.dom.java.Method;
-import org.mybatis.generator.api.dom.java.Parameter;
-import org.mybatis.generator.config.Context;
-import org.mybatis.generator.config.PropertyRegistry;
-import org.mybatis.generator.config.TableConfiguration;
+import static org.mybatis.generator.internal.util.StringUtility.isTrue;
 
 /**
  * @author Jeff Butler
@@ -216,6 +212,22 @@ public class JavaBeansUtil {
         field.setVisibility(JavaVisibility.PRIVATE);
         field.setType(fqjt);
         field.setName(property);
+        switch (fqjt.getFullyQualifiedName()) {
+            case "java.time.LocalDateTime":
+            case "java.util.Date":
+            case "java.time.OffsetDateTime":
+                field.addAnnotation("@JsonFormat(timezone = \"GMT+8\", pattern = \"yyyy-MM-dd HH:mm:ss\")");
+                field.setImportJsonFormat(true);
+                break;
+            case "java.time.LocalDate":
+                field.addAnnotation("@JsonFormat(timezone = \"GMT+8\", pattern = \"yyyy-MM-dd\")");
+                field.setImportJsonFormat(true);
+                break;
+            case "java.time.OffsetTime":
+                field.addAnnotation("@JsonFormat(timezone = \"GMT+8\", pattern = \"HH:mm:ss\")");
+                field.setImportJsonFormat(true);
+                break;
+        }
         context.getCommentGenerator().addFieldComment(field,
                 introspectedTable, introspectedColumn);
 

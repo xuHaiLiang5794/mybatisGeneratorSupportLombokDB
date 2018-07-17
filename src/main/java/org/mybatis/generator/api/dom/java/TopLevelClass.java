@@ -15,14 +15,14 @@
  */
 package org.mybatis.generator.api.dom.java;
 
-import static org.mybatis.generator.api.dom.OutputUtilities.calculateImports;
-import static org.mybatis.generator.api.dom.OutputUtilities.newLine;
-import static org.mybatis.generator.internal.util.StringUtility.stringHasValue;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
+
+import static org.mybatis.generator.api.dom.OutputUtilities.calculateImports;
+import static org.mybatis.generator.api.dom.OutputUtilities.newLine;
+import static org.mybatis.generator.internal.util.StringUtility.stringHasValue;
 
 /**
  * The Class TopLevelClass.
@@ -102,6 +102,7 @@ public class TopLevelClass extends InnerClass implements CompilationUnit {
          * modify by hailiang.xu 20180713
          */
         importStrings.add("import lombok.Data;");
+        addImportJsonFormat(importStrings);
         for (String importString : importStrings) {
             sb.append(importString);
             newLine(sb);
@@ -114,6 +115,21 @@ public class TopLevelClass extends InnerClass implements CompilationUnit {
         sb.append(super.getFormattedContent(0, this));
 
         return sb.toString();
+    }
+    private void addImportJsonFormat(Set<String> importStrings) {
+        List<Field> fields = getFields();
+        if (!fields.isEmpty()) {
+            boolean isImportJsonFormat = false;
+            for (Field field : fields) {
+                if (field.isImportJsonFormat()) {
+                    isImportJsonFormat = true;
+                    break;
+                }
+            }
+            if (isImportJsonFormat) {
+                importStrings.add("import com.fasterxml.jackson.annotation.JsonFormat;");
+            }
+        }
     }
 
     @Override
