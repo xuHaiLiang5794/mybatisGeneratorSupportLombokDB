@@ -1,6 +1,7 @@
 # mybatis-generator-core-1.3.7-sources[lombok/swagger]
 ## 项目介绍
-在mybatis-generator-core-1.3.7-sources源码的基础上，集成lombok和swagger，并根据需求添加一些其他内容
+生成entity时没有找到带中文方法注释的配置方法，而我恰巧又需要一个集成了lombok和swagger的entity，
+因此下载了mybatis-generator-core-1.3.7-sources源码，并在此基础上，做些调整集成了lombok和swagger。
 
 
 ## 新增功能
