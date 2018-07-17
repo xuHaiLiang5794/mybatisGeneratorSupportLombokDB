@@ -15,6 +15,8 @@
  */
 package org.mybatis.generator.api.dom.java;
 
+import java.util.List;
+
 public class JavaDomUtils {
     /**
      * Calculates type names for writing into generated Java.  We try to
@@ -45,6 +47,15 @@ public class JavaDomUtils {
             FullyQualifiedJavaType fqjt) {
         String baseTypeName = calculateTypeName(compilationUnit,
                 new FullyQualifiedJavaType(fqjt.getFullyQualifiedNameWithoutTypeParameters()));
+        List<String> importStrings = fqjt.getImportList();
+        if (importStrings != null
+                && importStrings.contains(baseTypeName)) {
+            /**
+             * 如果有import则方法的类型不要包名
+             * add by hailiang.xu 20180717
+             */
+            baseTypeName = fqjt.getShortNameWithoutTypeArguments();
+        }
 
         StringBuilder sb = new StringBuilder();
         sb.append(baseTypeName);

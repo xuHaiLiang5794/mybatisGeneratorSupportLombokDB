@@ -27,3 +27,12 @@ org.mybatis.generator.api.dom.java.InnerClass
 org.mybatis.generator.internal.util.JavaBeansUtil
 org.mybatis.generator.api.dom.java.TopLevelClass
 添加日期/时间格式化注解
+
+
+org.mybatis.generator.codegen.mybatis3.xmlmapper.XMLMapperGenerator
+org.mybatis.generator.codegen.mybatis3.xmlmapper.elements.SelectByConditionElementGenerator
+增加mapper xml中select(id=selectByCondition)标签
+
+org.mybatis.generator.codegen.mybatis3.javamapper.JavaMapperGenerator
+org.mybatis.generator.codegen.mybatis3.javamapper.elements.SelectByConditionMethodGenerator
+增加mapper java中selectByCondition方法
